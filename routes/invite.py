@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from flask import Blueprint, jsonify, render_template, request, session
 
 from models.db import db
@@ -14,8 +16,12 @@ def _find_pending_member(token: str) -> OrganizationMember | None:
     member = OrganizationMember.query.filter_by(invite_token=token).first()
     if not member or member.status != "invited":
         return None
-    if member.invite_expires_at and member.invite_expires_at < utcnow():
-        return None
+    expires_at = member.invite_expires_at
+    if expires_at:
+        if expires_at.tzinfo is None:
+            expires_at = expires_at.replace(tzinfo=timezone.utc)
+        if expires_at < utcnow():
+            return None
     return member
 
 
