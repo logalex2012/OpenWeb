@@ -53,7 +53,8 @@ def run_migrations() -> None:
             db.session.execute(text("ALTER TABLE messages ADD COLUMN poll_id INTEGER"))
         db.session.commit()
 
-    cleanup_test_members()
+    if "organization_members" in tables:
+        cleanup_test_members()
 
 
 def cleanup_test_members() -> None:
