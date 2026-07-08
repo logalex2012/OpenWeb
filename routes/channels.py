@@ -1,11 +1,22 @@
 import uuid
+from datetime import timedelta
 from pathlib import Path
 
 from flask import Blueprint, jsonify, request, session
 from werkzeug.utils import secure_filename
 
 from models.db import db
-from models.models import Attachment, CallRoom, Channel, ChannelCategory, Message, MessageReaction, User
+from models.models import (
+    Attachment,
+    CallRoom,
+    Channel,
+    ChannelCategory,
+    Message,
+    MessageReaction,
+    TypingStatus,
+    User,
+    utcnow,
+)
 from routes.auth import login_required
 from services.channels import (
     ALLOWED_ICONS,
@@ -15,6 +26,7 @@ from services.channels import (
     normalize_icon,
     user_can_access_channel,
 )
+from services.notifications import notify_mentions, notify_thread_reply
 
 channels_bp = Blueprint("channels", __name__, url_prefix="/api")
 
@@ -221,6 +233,72 @@ def channel_messages(channel_id):
     return jsonify({"messages": [msg.to_dict(current_user_id=user.id) for msg in messages]})
 
 
+@channels_bp.route("/channels/<int:channel_id>/sync")
+@login_required
+def sync_channel(channel_id):
+    user = User.query.get_or_404(session["user_id"])
+    channel = Channel.query.get_or_404(channel_id)
+    if not user_can_access_channel(user, channel):
+        return jsonify({"error": "Нет доступа к каналу"}), 403
+
+    after_id = request.args.get("after_id", 0, type=int) or 0
+    now = utcnow()
+
+    new_messages = (
+        Message.query.filter_by(channel_id=channel.id)
+        .filter(Message.id > after_id)
+        .filter(Message.deleted_at.is_(None))
+        .order_by(Message.created_at.asc())
+        .limit(100)
+        .all()
+    )
+
+    updated_messages = (
+        Message.query.filter_by(channel_id=channel.id)
+        .filter(Message.id <= after_id)
+        .filter(Message.updated_at.isnot(None))
+        .filter(Message.updated_at > now - timedelta(seconds=20))
+        .order_by(Message.updated_at.asc())
+        .limit(50)
+        .all()
+    )
+
+    typing_rows = (
+        TypingStatus.query.filter_by(channel_id=channel.id)
+        .filter(TypingStatus.user_id != user.id)
+        .filter(TypingStatus.updated_at > now - timedelta(seconds=6))
+        .all()
+    )
+
+    return jsonify(
+        {
+            "new_messages": [msg.to_dict(current_user_id=user.id) for msg in new_messages],
+            "updated_messages": [
+                {**msg.to_dict(current_user_id=user.id), "deleted": msg.deleted_at is not None}
+                for msg in updated_messages
+            ],
+            "typing": [{"user_id": t.user_id, "name": t.user.name} for t in typing_rows if t.user],
+        }
+    )
+
+
+@channels_bp.route("/channels/<int:channel_id>/typing", methods=["POST"])
+@login_required
+def typing_heartbeat(channel_id):
+    user = User.query.get_or_404(session["user_id"])
+    channel = Channel.query.get_or_404(channel_id)
+    if not user_can_access_channel(user, channel):
+        return jsonify({"error": "Нет доступа к каналу"}), 403
+
+    status = TypingStatus.query.filter_by(channel_id=channel.id, user_id=user.id).first()
+    if status:
+        status.updated_at = utcnow()
+    else:
+        db.session.add(TypingStatus(channel_id=channel.id, user_id=user.id, updated_at=utcnow()))
+    db.session.commit()
+    return jsonify({"ok": True})
+
+
 @channels_bp.route("/channels/<int:channel_id>/messages", methods=["POST"])
 @login_required
 def send_message(channel_id):
@@ -236,6 +314,9 @@ def send_message(channel_id):
 
     message = Message(channel_id=channel.id, user_id=user.id, content=content)
     db.session.add(message)
+    db.session.flush()
+
+    notify_mentions(data.get("mentions") or [], user, channel.id, message.id, content)
     db.session.commit()
     return jsonify({"message": message.to_dict(current_user_id=user.id)})
 
@@ -252,8 +333,8 @@ def delete_message(channel_id, message_id):
     if message.user_id != user.id:
         return jsonify({"error": "Нельзя удалить чужое сообщение"}), 403
 
-    from models.models import utcnow
     message.deleted_at = utcnow()
+    message.updated_at = utcnow()
     db.session.commit()
     return jsonify({"ok": True})
 
@@ -268,6 +349,7 @@ def pin_message(channel_id, message_id):
 
     message = Message.query.filter_by(id=message_id, channel_id=channel_id).first_or_404()
     message.is_pinned = not message.is_pinned
+    message.updated_at = utcnow()
     db.session.commit()
     return jsonify({"message": message.to_dict(current_user_id=user.id)})
 
@@ -315,6 +397,7 @@ def add_reaction(message_id):
     else:
         db.session.add(MessageReaction(message_id=message_id, user_id=user_id, emoji=emoji))
 
+    message.updated_at = utcnow()
     db.session.commit()
     db.session.refresh(message)
     return jsonify({"message": message.to_dict(current_user_id=user_id)})
@@ -470,6 +553,12 @@ def reply_to_message(channel_id, message_id):
 
     reply = Message(channel_id=channel_id, user_id=user.id, content=content, parent_id=message_id)
     db.session.add(reply)
+    parent.updated_at = utcnow()
+    db.session.flush()
+
+    notify_mentions(data.get("mentions") or [], user, channel_id, parent.id, content)
+    notify_thread_reply(parent.user_id, user, channel_id, parent.id, content)
+
     db.session.commit()
     return jsonify({"reply": reply.to_dict(current_user_id=user.id), "parent": parent.to_dict(current_user_id=user.id)})
 

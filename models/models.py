@@ -104,6 +104,8 @@ class OrganizationMember(db.Model):
     role = db.Column(db.String(32), default="member")
     status = db.Column(db.String(32), default="invited")
     invited_by_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    invite_token = db.Column(db.String(64), index=True)
+    invite_expires_at = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, default=utcnow)
 
     organization = db.relationship("Organization", back_populates="team")
@@ -257,6 +259,7 @@ class Message(db.Model):
     attachment_id = db.Column(db.Integer, db.ForeignKey("attachments.id"))
     deleted_at = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, default=utcnow, index=True)
+    updated_at = db.Column(db.DateTime, default=utcnow, onupdate=utcnow, index=True)
     parent_id = db.Column(db.Integer, db.ForeignKey("messages.id"))
     poll_id = db.Column(db.Integer, db.ForeignKey("polls.id"))
     replies = db.relationship("Message", backref=db.backref("parent", remote_side="Message.id"), lazy="dynamic", foreign_keys="Message.parent_id")
@@ -444,6 +447,7 @@ class KanbanCard(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False, index=True)
     created_by_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    assignee_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, default="")
     column = db.Column(db.String(32), default="todo")  # todo | progress | done
@@ -454,7 +458,8 @@ class KanbanCard(db.Model):
     updated_at = db.Column(db.DateTime, default=utcnow, onupdate=utcnow)
 
     channel = db.relationship("Channel")
-    created_by = db.relationship("User")
+    created_by = db.relationship("User", foreign_keys=[created_by_id])
+    assignee = db.relationship("User", foreign_keys=[assignee_id])
 
     def to_dict(self):
         return {
@@ -466,6 +471,8 @@ class KanbanCard(db.Model):
             "position": self.position,
             "color": self.color or "",
             "created_by_name": self.created_by.name if self.created_by else "",
+            "assignee_id": self.assignee_id,
+            "assignee_name": self.assignee.name if self.assignee else "",
             "created_at": self.created_at.isoformat(),
         }
 
@@ -552,4 +559,52 @@ class Reminder(db.Model):
             "message_preview": self.message_preview or "",
             "remind_at": self.remind_at.isoformat(),
             "sent": self.sent,
+        }
+
+
+class TypingStatus(db.Model):
+    __tablename__ = "typing_statuses"
+    __table_args__ = (db.UniqueConstraint("channel_id", "user_id", name="uq_typing_channel_user"),)
+
+    id = db.Column(db.Integer, primary_key=True)
+    channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False, index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    updated_at = db.Column(db.DateTime, default=utcnow, onupdate=utcnow)
+
+    channel = db.relationship("Channel")
+    user = db.relationship("User")
+
+
+class Notification(db.Model):
+    __tablename__ = "notifications"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, index=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    type = db.Column(db.String(32), nullable=False)  # mention | thread_reply | kanban_assigned
+    channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"))
+    message_id = db.Column(db.Integer, db.ForeignKey("messages.id"))
+    card_id = db.Column(db.Integer, db.ForeignKey("kanban_cards.id"))
+    preview = db.Column(db.String(300))
+    is_read = db.Column(db.Boolean, default=False, index=True)
+    created_at = db.Column(db.DateTime, default=utcnow, index=True)
+
+    user = db.relationship("User", foreign_keys=[user_id])
+    actor = db.relationship("User", foreign_keys=[actor_id])
+    channel = db.relationship("Channel")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "type": self.type,
+            "actor_name": self.actor.name if self.actor else "",
+            "actor_avatar_url": (self.actor.settings.avatar_url or "") if self.actor and self.actor.settings else "",
+            "channel_id": self.channel_id,
+            "channel_name": self.channel.name if self.channel else "",
+            "channel_icon": self.channel.icon if self.channel else "#",
+            "message_id": self.message_id,
+            "card_id": self.card_id,
+            "preview": self.preview or "",
+            "is_read": self.is_read,
+            "created_at": self.created_at.isoformat(),
         }

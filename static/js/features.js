@@ -55,20 +55,23 @@ document.getElementById("thread-close")?.addEventListener("click", () => {
     threadState.parentMessageId = null;
 });
 
+const threadMentionDropdown = document.getElementById("thread-mention-dropdown");
+const threadMentions = threadInput && threadMentionDropdown && window.attachMentionAutocomplete
+    ? window.attachMentionAutocomplete(threadInput, threadMentionDropdown)
+    : null;
+
 threadForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const content = threadInput?.value.trim();
     if (!content || !threadState.parentMessageId) return;
+    const mentions = threadMentions?.getMentionIds() || [];
     threadInput.value = "";
+    threadMentions?.reset();
     await window.appApi(`/api/channels/${threadState.channelId}/messages/${threadState.parentMessageId}/reply`, {
         method: "POST",
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content, mentions }),
     }).catch(() => null);
     await loadThread();
-    if (window.appState?.activeChannelId) {
-        const data = await window.appApi(`/api/channels/${window.appState.activeChannelId}/messages`).catch(() => null);
-        if (data && window.renderMessages) window.renderMessages(data.messages);
-    }
 });
 
 threadInput?.addEventListener("input", () => {

@@ -6,6 +6,7 @@ from routes.auth import login_required
 from services.organization import (
     VALID_MEMBER_ROLES,
     create_organization_with_team,
+    generate_invite_token,
     get_user_organization,
     list_organization_members,
     user_needs_onboarding,
@@ -118,20 +119,37 @@ def add_organization_member():
     if existing:
         return jsonify({"error": "Участник с таким email уже добавлен"}), 409
 
-    linked_user = User.query.filter_by(email=email).first()
+    token, expires_at = generate_invite_token()
     member = OrganizationMember(
         organization_id=user.organization_id,
-        user_id=linked_user.id if linked_user else None,
         email=email,
         name=name,
         role=role,
-        status="active" if linked_user else "invited",
+        status="invited",
         invited_by_id=user.id,
+        invite_token=token,
+        invite_expires_at=expires_at,
     )
     db.session.add(member)
-
-    if linked_user and not linked_user.organization_id:
-        linked_user.organization_id = user.organization_id
-
     db.session.commit()
-    return jsonify({"member": member_to_dict(member)})
+    return jsonify({"member": member_to_dict(member), "invite_path": f"/invite/{token}"})
+
+
+@org_bp.route("/members/<int:member_id>/resend-invite", methods=["POST"])
+@login_required
+def resend_invite(member_id):
+    user = User.query.get_or_404(session["user_id"])
+    if not user.organization_id:
+        return jsonify({"error": "Сначала создайте workspace"}), 400
+
+    member = OrganizationMember.query.filter_by(
+        id=member_id, organization_id=user.organization_id
+    ).first_or_404()
+    if member.status != "invited":
+        return jsonify({"error": "Приглашение уже принято"}), 409
+
+    token, expires_at = generate_invite_token()
+    member.invite_token = token
+    member.invite_expires_at = expires_at
+    db.session.commit()
+    return jsonify({"member": member_to_dict(member), "invite_path": f"/invite/{token}"})

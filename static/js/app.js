@@ -5,7 +5,13 @@ const state = {
     user: null,
     settings: null,
     team: [],
+    lastMessageId: 0,
 };
+
+const SYNC_INTERVAL_MS = 2500;
+const TYPING_HEARTBEAT_MS = 3000;
+let syncTimer = null;
+let lastTypingSentAt = 0;
 
 const messagesEl = document.getElementById("messages");
 const channelHead = document.getElementById("channel-head");
@@ -106,64 +112,113 @@ function renderMessageAvatar(message) {
     return `<div class="message-avatar ${message.is_agent ? "agent" : ""}" style="background:${avatarGradient(name)}">${initials(name)}</div>`;
 }
 
+function messageTemplate(message) {
+    const name = message.author_name || "OpenWeb AI";
+    const isPinned = message.is_pinned ? ' message-pinned' : '';
+    const pinIndicator = message.is_pinned ? '<span class="pin-indicator" title="Закреплено">📌</span>' : '';
+
+    const reactionsHtml = (message.reactions || []).map(r =>
+        `<button class="reaction-btn ${r.mine ? 'mine' : ''}" data-message-id="${message.id}" data-emoji="${r.emoji}" type="button">${r.emoji} ${r.count}</button>`
+    ).join("");
+
+    const reactionPickerHtml = `<div class="reaction-picker" data-message-id="${message.id}">
+        ${["👍","❤️","😂","😮","😢","🔥","✅","👀","🎉","💯"].map(e =>
+            `<button class="reaction-picker-btn" data-message-id="${message.id}" data-emoji="${e}" type="button">${e}</button>`
+        ).join("")}
+    </div>`;
+
+    const attachmentHtml = message.attachment ? renderAttachment(message.attachment) : "";
+    const pollHtml = message.poll ? (window.renderPoll ? window.renderPoll(message.poll, message.channel_id) : "") : "";
+
+    const isOwn = message.user_id && message.user_id === state.user?.id;
+    const deleteBtn = isOwn ? `<button class="msg-action-btn msg-delete" data-message-id="${message.id}" title="Удалить">🗑</button>` : "";
+    const pinBtn = `<button class="msg-action-btn msg-pin" data-message-id="${message.id}" title="${message.is_pinned ? 'Открепить' : 'Закрепить'}">📌</button>`;
+
+    return `
+        <article class="message ${message.is_agent ? "agent" : ""}${isPinned}" data-message-id="${message.id}">
+            ${renderMessageAvatar(message)}
+            <div class="message-content">
+                <div class="message-meta">
+                    <strong>${escapeHtml(name)}</strong>
+                    <time>${formatTime(message.created_at)}</time>
+                    ${pinIndicator}
+                    ${message.reply_count > 0 ? `<button class="reply-count-btn msg-reply" data-message-id="${message.id}" data-author="${escapeHtml(name)}" type="button">${message.reply_count} ответ${message.reply_count === 1 ? "" : "а"}</button>` : ""}
+                </div>
+                <div class="message-body">${renderMarkdownLite(message.content)}</div>
+                ${attachmentHtml}
+                ${pollHtml}
+                ${reactionsHtml ? `<div class="reactions-row">${reactionsHtml}</div>` : ""}
+                <div class="message-actions">
+                    <button class="msg-action-btn msg-reply" data-message-id="${message.id}" data-author="${escapeHtml(name)}" title="Ответить в треде">💬</button>
+                    <button class="msg-action-btn msg-react-toggle" data-message-id="${message.id}" title="Реакция">😊</button>
+                    ${pinBtn}
+                    ${deleteBtn}
+                </div>
+                ${reactionPickerHtml}
+            </div>
+        </article>
+    `;
+}
+
+function updateLastMessageId(messages) {
+    messages.forEach((message) => {
+        if (message.id > state.lastMessageId) state.lastMessageId = message.id;
+    });
+}
+
 function renderMessages(messages) {
     if (!messages.length) {
         messagesEl.innerHTML = `<div class="chat-empty"><p>Пока нет сообщений. Начните обсуждение.</p></div>`;
+        state.lastMessageId = 0;
         return;
     }
 
-    messagesEl.innerHTML = messages
-        .map((message) => {
-            const name = message.author_name || "OpenWeb AI";
-            const isPinned = message.is_pinned ? ' message-pinned' : '';
-            const pinIndicator = message.is_pinned ? '<span class="pin-indicator" title="Закреплено">📌</span>' : '';
-
-            const reactionsHtml = (message.reactions || []).map(r =>
-                `<button class="reaction-btn ${r.mine ? 'mine' : ''}" data-message-id="${message.id}" data-emoji="${r.emoji}" type="button">${r.emoji} ${r.count}</button>`
-            ).join("");
-
-            const reactionPickerHtml = `<div class="reaction-picker" data-message-id="${message.id}">
-                ${["👍","❤️","😂","😮","😢","🔥","✅","👀","🎉","💯"].map(e =>
-                    `<button class="reaction-picker-btn" data-message-id="${message.id}" data-emoji="${e}" type="button">${e}</button>`
-                ).join("")}
-            </div>`;
-
-            const attachmentHtml = message.attachment ? renderAttachment(message.attachment) : "";
-            const pollHtml = message.poll ? (window.renderPoll ? window.renderPoll(message.poll, message.channel_id) : "") : "";
-
-            const isOwn = message.user_id && message.user_id === state.user?.id;
-            const deleteBtn = isOwn ? `<button class="msg-action-btn msg-delete" data-message-id="${message.id}" title="Удалить">🗑</button>` : "";
-            const pinBtn = `<button class="msg-action-btn msg-pin" data-message-id="${message.id}" title="${message.is_pinned ? 'Открепить' : 'Закрепить'}">📌</button>`;
-
-            return `
-                <article class="message ${message.is_agent ? "agent" : ""}${isPinned}" data-message-id="${message.id}">
-                    ${renderMessageAvatar(message)}
-                    <div class="message-content">
-                        <div class="message-meta">
-                            <strong>${escapeHtml(name)}</strong>
-                            <time>${formatTime(message.created_at)}</time>
-                            ${pinIndicator}
-                            ${message.reply_count > 0 ? `<button class="reply-count-btn msg-reply" data-message-id="${message.id}" data-author="${escapeHtml(name)}" type="button">${message.reply_count} ответ${message.reply_count === 1 ? "" : "а"}</button>` : ""}
-                        </div>
-                        <div class="message-body">${renderMarkdownLite(message.content)}</div>
-                        ${attachmentHtml}
-                        ${pollHtml}
-                        ${reactionsHtml ? `<div class="reactions-row">${reactionsHtml}</div>` : ""}
-                        <div class="message-actions">
-                            <button class="msg-action-btn msg-reply" data-message-id="${message.id}" data-author="${escapeHtml(name)}" title="Ответить в треде">💬</button>
-                            <button class="msg-action-btn msg-react-toggle" data-message-id="${message.id}" title="Реакция">😊</button>
-                            ${pinBtn}
-                            ${deleteBtn}
-                        </div>
-                        ${reactionPickerHtml}
-                    </div>
-                </article>
-            `;
-        })
-        .join("");
+    messagesEl.innerHTML = messages.map(messageTemplate).join("");
+    state.lastMessageId = 0;
+    updateLastMessageId(messages);
 
     messagesEl.scrollTop = messagesEl.scrollHeight;
-    bindMessageActions();
+    bindMessageActions(messagesEl);
+}
+
+function isScrolledNearBottom() {
+    return messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 120;
+}
+
+function appendNewMessages(messages) {
+    if (!messages.length) return;
+
+    const stickToBottom = isScrolledNearBottom();
+    const emptyState = messagesEl.querySelector(".chat-empty");
+    if (emptyState) emptyState.remove();
+
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = messages.map(messageTemplate).join("");
+    Array.from(wrapper.children).forEach((node) => {
+        messagesEl.appendChild(node);
+        bindMessageActions(node);
+    });
+
+    updateLastMessageId(messages);
+    if (stickToBottom) messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function patchMessageNode(message) {
+    const node = messagesEl.querySelector(`.message[data-message-id="${message.id}"]`);
+    if (!node) return;
+    node.outerHTML = messageTemplate(message);
+    const freshNode = messagesEl.querySelector(`.message[data-message-id="${message.id}"]`);
+    if (freshNode) bindMessageActions(freshNode);
+}
+
+function applyMessageUpdates(messages) {
+    messages.forEach((message) => {
+        if (message.deleted) {
+            messagesEl.querySelector(`.message[data-message-id="${message.id}"]`)?.remove();
+            return;
+        }
+        patchMessageNode(message);
+    });
 }
 
 function renderAttachment(att) {
@@ -200,8 +255,8 @@ function renderAttachment(att) {
     </div>`;
 }
 
-function bindMessageActions() {
-    messagesEl.querySelectorAll(".msg-react-toggle").forEach(btn => {
+function bindMessageActions(scope = messagesEl) {
+    scope.querySelectorAll(".msg-react-toggle").forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const msgId = btn.dataset.messageId;
@@ -210,7 +265,7 @@ function bindMessageActions() {
         });
     });
 
-    messagesEl.querySelectorAll(".reaction-picker-btn").forEach(btn => {
+    scope.querySelectorAll(".reaction-picker-btn").forEach(btn => {
         btn.addEventListener("click", async (e) => {
             e.stopPropagation();
             const msgId = btn.dataset.messageId;
@@ -219,11 +274,11 @@ function bindMessageActions() {
                 method: "POST",
                 body: JSON.stringify({ emoji }),
             }).catch(() => null);
-            if (data && state.activeChannelId) await selectChannel(state.activeChannelId);
+            if (data?.message) patchMessageNode(data.message);
         });
     });
 
-    messagesEl.querySelectorAll(".reaction-btn").forEach(btn => {
+    scope.querySelectorAll(".reaction-btn").forEach(btn => {
         btn.addEventListener("click", async () => {
             const msgId = btn.dataset.messageId;
             const emoji = btn.dataset.emoji;
@@ -231,30 +286,30 @@ function bindMessageActions() {
                 method: "POST",
                 body: JSON.stringify({ emoji }),
             }).catch(() => null);
-            if (data && state.activeChannelId) await selectChannel(state.activeChannelId);
+            if (data?.message) patchMessageNode(data.message);
         });
     });
 
-    messagesEl.querySelectorAll(".msg-pin").forEach(btn => {
+    scope.querySelectorAll(".msg-pin").forEach(btn => {
         btn.addEventListener("click", async () => {
             const msgId = btn.dataset.messageId;
             const chId = state.activeChannelId;
-            await api(`/api/channels/${chId}/messages/${msgId}/pin`, { method: "PUT" }).catch(() => null);
-            if (chId) await selectChannel(chId);
+            const data = await api(`/api/channels/${chId}/messages/${msgId}/pin`, { method: "PUT" }).catch(() => null);
+            if (data?.message) patchMessageNode(data.message);
         });
     });
 
-    messagesEl.querySelectorAll(".msg-delete").forEach(btn => {
+    scope.querySelectorAll(".msg-delete").forEach(btn => {
         btn.addEventListener("click", async () => {
             if (!confirm("Удалить сообщение?")) return;
             const msgId = btn.dataset.messageId;
             const chId = state.activeChannelId;
             await api(`/api/channels/${chId}/messages/${msgId}`, { method: "DELETE" }).catch(() => null);
-            if (chId) await selectChannel(chId);
+            messagesEl.querySelector(`.message[data-message-id="${msgId}"]`)?.remove();
         });
     });
 
-    messagesEl.querySelectorAll(".msg-reply").forEach(btn => {
+    scope.querySelectorAll(".msg-reply").forEach(btn => {
         btn.addEventListener("click", () => {
             const msgId = Number(btn.dataset.messageId);
             const author = btn.dataset.author || "";
@@ -262,13 +317,14 @@ function bindMessageActions() {
             if (window.openThread) window.openThread(msgId, chId, author);
         });
     });
-
-    document.addEventListener("click", () => {
-        messagesEl.querySelectorAll(".reaction-picker.visible").forEach(p => p.classList.remove("visible"));
-    }, { once: false });
 }
 
+document.addEventListener("click", () => {
+    messagesEl.querySelectorAll(".reaction-picker.visible").forEach(p => p.classList.remove("visible"));
+});
+
 function renderEmptyChat() {
+    stopSync();
     channelHead.innerHTML = `
         <h1>Выберите канал</h1>
         <p>Создайте раздел и канал в боковом меню или откройте существующий чат</p>
@@ -278,10 +334,54 @@ function renderEmptyChat() {
     messageInput.disabled = true;
 }
 
+function renderTyping(typingUsers) {
+    const el = document.getElementById("typing-indicator");
+    if (!el) return;
+    if (!typingUsers.length) {
+        el.textContent = "";
+        el.hidden = true;
+        return;
+    }
+    const names = typingUsers.map((t) => t.name).join(", ");
+    const verb = typingUsers.length === 1 ? "печатает…" : "печатают…";
+    el.textContent = `${names} ${verb}`;
+    el.hidden = false;
+}
+
+function stopSync() {
+    if (syncTimer) {
+        clearInterval(syncTimer);
+        syncTimer = null;
+    }
+    renderTyping([]);
+}
+
+async function pollSync(channelId) {
+    const data = await api(`/api/channels/${channelId}/sync?after_id=${state.lastMessageId}`).catch(() => null);
+    if (!data || state.activeChannelId !== channelId) return;
+
+    if (data.new_messages?.length) appendNewMessages(data.new_messages);
+    if (data.updated_messages?.length) applyMessageUpdates(data.updated_messages);
+    renderTyping(data.typing || []);
+}
+
+function startSync(channelId) {
+    stopSync();
+    syncTimer = setInterval(() => pollSync(channelId), SYNC_INTERVAL_MS);
+}
+
+async function sendTypingHeartbeat() {
+    const now = Date.now();
+    if (!state.activeChannelId || now - lastTypingSentAt < TYPING_HEARTBEAT_MS) return;
+    lastTypingSentAt = now;
+    await api(`/api/channels/${state.activeChannelId}/typing`, { method: "POST" }).catch(() => null);
+}
+
 async function selectChannel(channelId) {
     const channel = window.getChannelById?.(channelId) || state.channels.find((item) => item.id === channelId);
     if (!channel) return;
 
+    stopSync();
     state.activeChannelId = channelId;
     window.setActiveChannelId?.(channelId);
 
@@ -301,6 +401,7 @@ async function selectChannel(channelId) {
     const data = await api(`/api/channels/${channelId}/messages`);
     if (data) {
         renderMessages(data.messages);
+        startSync(channelId);
     }
 }
 
@@ -406,21 +507,133 @@ channelSearch?.addEventListener("input", (event) => {
     window.setChannelFilter?.(event.target.value);
 });
 
+function attachMentionAutocomplete(textareaEl, dropdownEl) {
+    let pendingMentions = [];
+    let activeIndex = 0;
+    let currentMatches = [];
+
+    function findMentionFragment() {
+        const cursor = textareaEl.selectionStart;
+        const value = textareaEl.value.slice(0, cursor);
+        const at = value.lastIndexOf("@");
+        if (at === -1) return null;
+        const fragment = value.slice(at + 1);
+        if (/\s/.test(fragment)) return null;
+        return { at, fragment };
+    }
+
+    function hideDropdown() {
+        dropdownEl.hidden = true;
+        dropdownEl.innerHTML = "";
+        currentMatches = [];
+    }
+
+    function renderDropdown(matches) {
+        currentMatches = matches;
+        activeIndex = 0;
+        if (!matches.length) {
+            hideDropdown();
+            return;
+        }
+        dropdownEl.innerHTML = matches
+            .map((m, i) => `<button type="button" class="mention-dropdown-item ${i === 0 ? "active" : ""}" data-index="${i}">${escapeHtml(m.name)}</button>`)
+            .join("");
+        dropdownEl.hidden = false;
+        dropdownEl.querySelectorAll(".mention-dropdown-item").forEach((btn) => {
+            btn.addEventListener("mousedown", (e) => {
+                e.preventDefault();
+                pickMention(Number(btn.dataset.index));
+            });
+        });
+    }
+
+    function pickMention(index) {
+        const member = currentMatches[index];
+        const match = findMentionFragment();
+        if (!member || !match) {
+            hideDropdown();
+            return;
+        }
+        const before = textareaEl.value.slice(0, match.at);
+        const after = textareaEl.value.slice(match.at + 1 + match.fragment.length);
+        textareaEl.value = `${before}@${member.name} ${after}`;
+        const newCursor = `${before}@${member.name} `.length;
+        textareaEl.focus();
+        textareaEl.setSelectionRange(newCursor, newCursor);
+        if (!pendingMentions.some((m) => m.id === member.id)) {
+            pendingMentions.push(member);
+        }
+        hideDropdown();
+    }
+
+    textareaEl.addEventListener("input", () => {
+        const match = findMentionFragment();
+        if (!match) {
+            hideDropdown();
+            return;
+        }
+        const query = match.fragment.toLowerCase();
+        const matches = (state.team || [])
+            .filter((m) => m.name.toLowerCase().includes(query))
+            .slice(0, 6);
+        renderDropdown(matches);
+    });
+
+    textareaEl.addEventListener("keydown", (e) => {
+        if (dropdownEl.hidden || !currentMatches.length) return;
+        if (e.key === "ArrowDown") {
+            e.preventDefault();
+            activeIndex = (activeIndex + 1) % currentMatches.length;
+            dropdownEl.querySelectorAll(".mention-dropdown-item").forEach((el, i) => el.classList.toggle("active", i === activeIndex));
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            activeIndex = (activeIndex - 1 + currentMatches.length) % currentMatches.length;
+            dropdownEl.querySelectorAll(".mention-dropdown-item").forEach((el, i) => el.classList.toggle("active", i === activeIndex));
+        } else if (e.key === "Enter" || e.key === "Tab") {
+            e.preventDefault();
+            pickMention(activeIndex);
+        } else if (e.key === "Escape") {
+            hideDropdown();
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        if (e.target !== textareaEl) hideDropdown();
+    });
+
+    return {
+        getMentionIds() {
+            return pendingMentions
+                .filter((m) => textareaEl.value.includes(`@${m.name}`))
+                .map((m) => m.id);
+        },
+        reset() {
+            pendingMentions = [];
+            hideDropdown();
+        },
+    };
+}
+
+const messageMentions = attachMentionAutocomplete(messageInput, document.getElementById("mention-dropdown"));
+window.attachMentionAutocomplete = attachMentionAutocomplete;
+
 messageForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const content = messageInput.value.trim();
     if (!content || !state.activeChannelId || messageInput.disabled) return;
 
+    const mentions = messageMentions.getMentionIds();
     messageInput.value = "";
     messageInput.style.height = "auto";
+    messageMentions.reset();
 
     const data = await api(`/api/channels/${state.activeChannelId}/messages`, {
         method: "POST",
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content, mentions }),
     });
 
-    if (data) {
-        await selectChannel(state.activeChannelId);
+    if (data?.message) {
+        appendNewMessages([data.message]);
     }
 });
 
@@ -696,6 +909,7 @@ document.getElementById("logout-btn")?.addEventListener("click", async () => {
 messageInput?.addEventListener("input", () => {
     messageInput.style.height = "auto";
     messageInput.style.height = `${Math.min(messageInput.scrollHeight, 160)}px`;
+    if (messageInput.value.trim()) sendTypingHeartbeat();
 });
 
 async function init() {

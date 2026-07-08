@@ -23,6 +23,8 @@ def validate_csrf(request_obj) -> bool:
         return True
     if request_obj.path in CSRF_EXEMPT_PATHS:
         return True
+    if request_obj.path.startswith("/api/invite/") and request_obj.path.endswith("/accept"):
+        return True
     token = request_obj.headers.get("X-CSRF-Token") or ""
     session_token = session.get("csrf_token") or ""
     return token == session_token and bool(token)

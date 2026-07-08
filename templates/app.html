@@ -85,6 +85,18 @@
                     <button class="header-action" id="start-call-btn" type="button" aria-label="Позвонить" title="Начать звонок">📞</button>
                     <button class="header-action" id="toggle-docs" type="button" aria-label="Документы" title="Документы канала">📄</button>
                     <button class="header-action" id="toggle-members" type="button" aria-label="Участники">👥</button>
+                    <div class="notif-bell-wrap">
+                        <button class="header-action" id="notif-bell" type="button" aria-label="Уведомления" title="Уведомления">
+                            🔔<span class="notif-badge" id="notif-badge" hidden>0</span>
+                        </button>
+                        <div class="notif-panel" id="notif-panel" hidden>
+                            <div class="notif-panel-head">
+                                <h3>Уведомления</h3>
+                                <button class="footer-link-btn" id="notif-mark-all" type="button">Прочитать всё</button>
+                            </div>
+                            <div class="notif-list" id="notif-list"></div>
+                        </div>
+                    </div>
                     <button class="btn btn-accent btn-sm" id="toggle-agent" type="button">OpenWeb AI</button>
                 </div>
             </header>
@@ -108,17 +120,21 @@
                         <button class="kanban-add-btn" data-col="done" type="button">+ Добавить</button>
                     </div>
                 </div>
+                <p class="typing-indicator" id="typing-indicator" aria-live="polite" hidden></p>
                 <form class="composer" id="message-form">
                     <div class="composer-box">
                         <input type="file" id="attach-input" multiple hidden>
                         <button type="button" class="composer-attach" id="attach-btn" aria-label="Прикрепить файл">📎</button>
                         <button type="button" class="composer-attach" id="voice-btn" aria-label="Голосовое сообщение" title="Голосовое сообщение">🎤</button>
-                        <textarea
-                            id="message-input"
-                            rows="1"
-                            placeholder="Напишите сообщение в #канал"
-                            aria-label="Сообщение"
-                        ></textarea>
+                        <div class="composer-input-wrap">
+                            <textarea
+                                id="message-input"
+                                rows="1"
+                                placeholder="Напишите сообщение в #канал"
+                                aria-label="Сообщение"
+                            ></textarea>
+                            <div class="mention-dropdown" id="mention-dropdown" hidden></div>
+                        </div>
                         <button type="submit" class="composer-send" aria-label="Отправить">➤</button>
                     </div>
                 </form>
@@ -150,7 +166,10 @@
             </div>
             <div class="thread-messages" id="thread-messages"></div>
             <form class="thread-composer" id="thread-form">
-                <textarea id="thread-input" rows="1" placeholder="Ответить в треде..."></textarea>
+                <div class="composer-input-wrap">
+                    <textarea id="thread-input" rows="1" placeholder="Ответить в треде..."></textarea>
+                    <div class="mention-dropdown" id="thread-mention-dropdown" hidden></div>
+                </div>
                 <button type="submit" class="composer-send" aria-label="Отправить">➤</button>
             </form>
         </aside>
@@ -447,7 +466,7 @@
                 </form>
 
                 <div class="settings-section" id="settings-team" data-settings-panel="team">
-                    <p class="settings-note">Участники вашей организации. Новые люди получат приглашение по email.</p>
+                    <p class="settings-note">Участники вашей организации. Для новых людей будет создана ссылка-приглашение — отправьте её вручную (email не отправляется автоматически).</p>
                     <ul class="settings-team-list" id="settings-team-list"></ul>
                     <form id="settings-add-member" class="settings-add-member">
                         <label>Имя<input type="text" name="name" required placeholder="Иван Иванов"></label>
@@ -574,5 +593,6 @@
     <script src="/static/js/docs.js"></script>
     <script src="/static/js/kanban.js"></script>
     <script src="/static/js/features.js"></script>
+    <script src="/static/js/notifications.js"></script>
 </body>
 </html>

@@ -4,11 +4,31 @@ from models.db import db
 from models.models import Channel, KanbanCard, User
 from routes.auth import login_required
 from services.channels import user_can_access_channel
+from services.notifications import notify_kanban_assignment
 
 kanban_bp = Blueprint("kanban", __name__, url_prefix="/api")
 
 VALID_COLUMNS = {"todo", "progress", "done"}
 VALID_COLORS = {"", "red", "green", "blue", "yellow", "purple", "orange"}
+
+
+def _resolve_assignee_id(data: dict, organization_id: int | None) -> tuple[int | None, str | None]:
+    if "assignee_id" not in data:
+        return None, None
+
+    raw = data.get("assignee_id")
+    if raw in (None, "", 0):
+        return None, "clear"
+
+    try:
+        assignee_id = int(raw)
+    except (TypeError, ValueError):
+        return None, "invalid"
+
+    if not User.query.filter_by(id=assignee_id, organization_id=organization_id).first():
+        return None, "invalid"
+
+    return assignee_id, "set"
 
 
 @kanban_bp.route("/channels/<int:channel_id>/kanban")
@@ -45,6 +65,10 @@ def create_card(channel_id):
     if col not in VALID_COLUMNS:
         col = "todo"
 
+    assignee_id, assignee_mode = _resolve_assignee_id(data, user.organization_id)
+    if assignee_mode == "invalid":
+        return jsonify({"error": "Участник не найден в организации"}), 400
+
     max_pos = (
         db.session.query(db.func.max(KanbanCard.position))
         .filter_by(channel_id=channel_id, column=col)
@@ -55,6 +79,7 @@ def create_card(channel_id):
     card = KanbanCard(
         channel_id=channel_id,
         created_by_id=user.id,
+        assignee_id=assignee_id,
         title=title[:255],
         description=(data.get("description") or "").strip(),
         column=col,
@@ -62,6 +87,10 @@ def create_card(channel_id):
         color=data.get("color", "") if data.get("color", "") in VALID_COLORS else "",
     )
     db.session.add(card)
+    db.session.flush()
+
+    notify_kanban_assignment(assignee_id, user, channel_id, card.id, card.title)
+
     db.session.commit()
     return jsonify({"card": card.to_dict()}), 201
 
@@ -87,6 +116,14 @@ def update_card(channel_id, card_id):
         card.position = int(data["position"])
     if "color" in data and data["color"] in VALID_COLORS:
         card.color = data["color"]
+
+    if "assignee_id" in data:
+        assignee_id, assignee_mode = _resolve_assignee_id(data, user.organization_id)
+        if assignee_mode == "invalid":
+            return jsonify({"error": "Участник не найден в организации"}), 400
+        if assignee_id != card.assignee_id:
+            card.assignee_id = assignee_id
+            notify_kanban_assignment(assignee_id, user, channel_id, card.id, card.title)
 
     db.session.commit()
     return jsonify({"card": card.to_dict()})

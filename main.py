@@ -6,7 +6,9 @@ from routes.api import api_bp
 from routes.channels import channels_bp
 from routes.csrf import validate_csrf
 from routes.docs import docs_bp
+from routes.invite import invite_bp
 from routes.kanban import kanban_bp
+from routes.notifications import notifications_bp
 from routes.onboarding import onboarding_bp, org_bp
 from routes.pages import pages_bp
 from routes.polls import polls_bp
@@ -26,6 +28,7 @@ def create_app() -> Flask:
 
     app.register_blueprint(pages_bp)
     app.register_blueprint(api_bp)
+    app.register_blueprint(invite_bp)
     app.register_blueprint(channels_bp)
     app.register_blueprint(onboarding_bp)
     app.register_blueprint(org_bp)
@@ -34,6 +37,7 @@ def create_app() -> Flask:
     app.register_blueprint(polls_bp)
     app.register_blueprint(search_bp)
     app.register_blueprint(reminders_bp)
+    app.register_blueprint(notifications_bp)
 
     @app.context_processor
     def inject_timeweb_ai():

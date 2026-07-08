@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение в OpenWeb</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<body>
+    <div class="gradient-bg" aria-hidden="true"></div>
+
+    <div class="invite-page-wrap">
+        {% if not valid %}
+        <div class="modal invite-card">
+            <div class="modal-header">
+                <p class="eyebrow">Приглашение</p>
+                <h2>Ссылка недействительна</h2>
+                <p class="modal-sub">Приглашение уже использовано, отозвано или истёк срок его действия. Попросите администратора отправить новую ссылку.</p>
+            </div>
+            <a class="btn btn-primary btn-full" href="/">На главную</a>
+        </div>
+        {% else %}
+        <div class="modal invite-card">
+            <div class="modal-header">
+                <p class="eyebrow">Приглашение в OpenWeb</p>
+                <h2>{{ organization_name }}</h2>
+                <p class="modal-sub">
+                    {% if inviter_name %}{{ inviter_name }} приглашает{% else %}Вас приглашают{% endif %}
+                    вас присоединиться к рабочему пространству «{{ organization_name }}» ({{ invitee_email }}).
+                </p>
+            </div>
+
+            <form id="invite-accept-form" class="auth-form active">
+                {% if account_exists %}
+                <p class="form-hint">У вас уже есть аккаунт OpenWeb с этим email. Войдите, чтобы принять приглашение.</p>
+                <label>
+                    Пароль
+                    <input type="password" name="password" required placeholder="••••••••" autocomplete="current-password">
+                </label>
+                {% else %}
+                <label>
+                    Имя
+                    <input type="text" name="name" required value="{{ invitee_name }}">
+                </label>
+                <label>
+                    Пароль
+                    <input type="password" name="password" required minlength="8" placeholder="Минимум 8 символов, буквы и цифры" autocomplete="new-password">
+                </label>
+                {% endif %}
+                <button type="submit" class="btn btn-primary btn-full">
+                    {% if account_exists %}Войти и присоединиться{% else %}Создать аккаунт и присоединиться{% endif %}
+                </button>
+            </form>
+            <p class="form-error" id="invite-error" hidden></p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        window.inviteToken = {{ token|tojson }};
+    </script>
+    <script src="/static/js/invite.js"></script>
+</body>
+</html>

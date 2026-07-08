@@ -203,6 +203,9 @@ function renderSettingsTeam(members) {
                 const avatarHtml = member.avatar_url
                     ? `<img class="settings-team-avatar avatar-image" src="${member.avatar_url}" alt="${member.name}">`
                     : `<span class="settings-team-avatar">${member.name.slice(0, 1).toUpperCase()}</span>`;
+                const inviteBtn = member.status === "invited"
+                    ? `<button type="button" class="footer-link-btn settings-team-resend" data-member-id="${member.id}">Скопировать ссылку</button>`
+                    : "";
                 return `
                 <li class="settings-team-item">
                     <div class="settings-team-person">
@@ -213,11 +216,30 @@ function renderSettingsTeam(members) {
                         </div>
                     </div>
                     <span class="team-badge ${member.status}">${member.status === "active" ? "Активен" : "Приглашён"}</span>
+                    ${inviteBtn}
                 </li>
             `;
             }
         )
         .join("");
+
+    list.querySelectorAll(".settings-team-resend").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+            const memberId = btn.dataset.memberId;
+            const data = await window.appApi(`/api/organization/members/${memberId}/resend-invite`, {
+                method: "POST",
+            }).catch(() => null);
+            if (!data?.invite_path) return;
+
+            const fullUrl = `${window.location.origin}${data.invite_path}`;
+            try {
+                await navigator.clipboard.writeText(fullUrl);
+                if (window.showSettingsStatus) window.showSettingsStatus(`Ссылка скопирована: ${fullUrl}`);
+            } catch (e) {
+                if (window.showSettingsStatus) window.showSettingsStatus(fullUrl);
+            }
+        });
+    });
 }
 
 window.renderSettingsTeam = renderSettingsTeam;

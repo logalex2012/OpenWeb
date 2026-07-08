@@ -51,9 +51,25 @@ def run_migrations() -> None:
             db.session.execute(text("ALTER TABLE messages ADD COLUMN parent_id INTEGER"))
         if "poll_id" not in msg_cols:
             db.session.execute(text("ALTER TABLE messages ADD COLUMN poll_id INTEGER"))
+        if "updated_at" not in msg_cols:
+            db.session.execute(text("ALTER TABLE messages ADD COLUMN updated_at TIMESTAMP"))
         db.session.commit()
 
+    if "kanban_cards" in tables:
+        kanban_columns = {col["name"] for col in inspector.get_columns("kanban_cards")}
+        if "assignee_id" not in kanban_columns:
+            db.session.execute(text("ALTER TABLE kanban_cards ADD COLUMN assignee_id INTEGER"))
+            db.session.commit()
+
     if "organization_members" in tables:
+        member_columns = {col["name"] for col in inspector.get_columns("organization_members")}
+        if "invite_token" not in member_columns:
+            db.session.execute(text("ALTER TABLE organization_members ADD COLUMN invite_token VARCHAR(64)"))
+            db.session.commit()
+        if "invite_expires_at" not in member_columns:
+            db.session.execute(text("ALTER TABLE organization_members ADD COLUMN invite_expires_at TIMESTAMP"))
+            db.session.commit()
+
         cleanup_test_members()
 
 

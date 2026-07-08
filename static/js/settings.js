@@ -26,6 +26,8 @@ function showSettingsStatus(message, isError = false) {
     settingsStatus.classList.toggle("error", isError);
 }
 
+window.showSettingsStatus = showSettingsStatus;
+
 function hideSettingsStatus() {
     settingsStatus.hidden = true;
     settingsStatus.classList.remove("error");
@@ -425,7 +427,18 @@ document.getElementById("settings-add-member")?.addEventListener("submit", async
             if (window.appLoadTeam) {
                 await window.appLoadTeam();
             }
-            showSettingsStatus("Участник добавлен в организацию.");
+
+            if (data.invite_path) {
+                const fullUrl = `${window.location.origin}${data.invite_path}`;
+                try {
+                    await navigator.clipboard.writeText(fullUrl);
+                    showSettingsStatus(`Приглашение создано. Ссылка скопирована: ${fullUrl}`);
+                } catch (e) {
+                    showSettingsStatus(`Приглашение создано. Отправьте эту ссылку участнику: ${fullUrl}`);
+                }
+            } else {
+                showSettingsStatus("Участник добавлен в организацию.");
+            }
         }
     } catch (error) {
         showSettingsStatus(error.message, true);

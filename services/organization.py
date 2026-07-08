@@ -1,8 +1,17 @@
+import secrets
+from datetime import timedelta
+
 from models.db import db
-from models.models import Organization, OrganizationMember, User, UserSettings
+from models.models import Organization, OrganizationMember, User, UserSettings, utcnow
 
 
 VALID_MEMBER_ROLES = {"owner", "admin", "member", "developer"}
+INVITE_EXPIRY_DAYS = 7
+
+
+def generate_invite_token() -> tuple[str, object]:
+    """Returns (token, expires_at) for a new organization invite."""
+    return secrets.token_urlsafe(32), utcnow() + timedelta(days=INVITE_EXPIRY_DAYS)
 
 
 def user_needs_onboarding(user: User) -> bool:

@@ -1,5 +1,16 @@
 from models.db import db
-from models.models import AgentConfig, AgentTask, Channel, Message, Organization, OrganizationMember, User, UserSettings
+from models.models import (
+    AgentConfig,
+    AgentTask,
+    Channel,
+    Message,
+    Notification,
+    Organization,
+    OrganizationMember,
+    TypingStatus,
+    User,
+    UserSettings,
+)
 
 __all__ = [
     "db",
@@ -11,4 +22,6 @@ __all__ = [
     "Message",
     "AgentConfig",
     "AgentTask",
+    "TypingStatus",
+    "Notification",
 ]
