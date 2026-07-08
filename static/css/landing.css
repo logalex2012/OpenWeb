@@ -1098,6 +1098,8 @@ select {
 
 .invite-card {
     width: min(100%, 440px);
+    opacity: 1;
+    transform: none;
 }
 
 [data-animate] {
