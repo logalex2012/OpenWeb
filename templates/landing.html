@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeb — рабочее пространство для команд в РФ</title>
+    <meta name="description" content="OpenWeb объединяет мессенджер, документы и AI-агента для бизнеса и разработчиков.">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<body>
+    <div class="gradient-bg" aria-hidden="true"></div>
+
+    <header class="site-header" data-animate>
+        <a href="/" class="logo">
+            <img src="/static/favicon.png" alt="" class="logo-mark" width="40" height="40">
+            <span class="logo-text">OpenWeb</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Основная навигация">
+            <a href="#products">Продукты</a>
+            <a href="#solutions">Решения</a>
+            <a href="#platform">Платформа</a>
+            <a href="#faq">Помощь</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn btn-ghost btn-sm" id="open-login-header">Войти</button>
+            <button class="btn btn-primary btn-sm" id="open-login-header-cta">Начать бесплатно</button>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+        <nav>
+            <a href="#products">Продукты</a>
+            <a href="#solutions">Решения</a>
+            <a href="#platform">Платформа</a>
+            <a href="#faq">Помощь</a>
+        </nav>
+        <button class="btn btn-primary btn-full" id="open-login-mobile">Начать бесплатно</button>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy" data-animate>
+                <p class="eyebrow">Рабочее пространство для команд в России</p>
+                <h1>Управляйте командой с&nbsp;выгодой в&nbsp;<span class="gradient-text">OpenWeb</span></h1>
+                <p class="hero-sub">
+                    Мессенджер, база знаний и AI-агент в одном окне. Обсуждайте задачи,
+                    делитесь документами и поручайте рутину ассистенту — как в современном
+                    интернет-банке, только для вашей команды.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" id="open-login-hero">Начать бесплатно</button>
+                    <a class="btn btn-secondary btn-lg" href="#products">Смотреть продукты</a>
+                </div>
+                <ul class="hero-trust">
+                    <li>Бесплатный старт</li>
+                    <li>Демо за 1 минуту</li>
+                    <li>Данные в РФ</li>
+                </ul>
+            </div>
+
+            <div class="hero-visual" data-animate data-delay="1">
+                <div class="mockup-window">
+                    <div class="mockup-top">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="mockup-body">
+                        <aside class="mock-rail" aria-hidden="true">
+                            <span class="mock-server active"></span>
+                            <span class="mock-server"></span>
+                        </aside>
+                        <aside class="mock-sidebar">
+                            <div class="mock-workspace">OpenWeb</div>
+                            <div class="mock-channel active"><span>#</span> общее</div>
+                            <div class="mock-channel"><span>#</span> разработка</div>
+                            <div class="mock-channel"><span>#</span> бизнес</div>
+                            <div class="mock-channel agent"><span>#</span> агент</div>
+                        </aside>
+                        <div class="mock-chat">
+                            <div class="mock-msg">
+                                <span class="mock-avatar">М</span>
+                                <div>
+                                    <strong>Мария <time>14:32</time></strong>
+                                    <p>Нужен пост для Telegram и VK о запуске продукта</p>
+                                </div>
+                            </div>
+                            <div class="mock-msg agent">
+                                <span class="mock-avatar ai">AI</span>
+                                <div>
+                                    <strong>OpenWeb AI <time>14:33</time></strong>
+                                    <p>Готовый текст для Telegram, X и VK уже в канале «агент» ✨</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-nav" aria-label="Быстрый доступ к продуктам">
+            <div class="product-nav-inner">
+                <a href="#products" class="product-nav-item active">
+                    <span class="product-nav-icon">💬</span>
+                    <span>Мессенджер</span>
+                </a>
+                <a href="#products" class="product-nav-item">
+                    <span class="product-nav-icon">🤖</span>
+                    <span>OpenWeb AI</span>
+                </a>
+                <a href="#products" class="product-nav-item">
+                    <span class="product-nav-icon">👥</span>
+                    <span>Команда</span>
+                </a>
+                <a href="#products" class="product-nav-item">
+                    <span class="product-nav-icon">📋</span>
+                    <span>Workspace</span>
+                </a>
+                <a href="#products" class="product-nav-item">
+                    <span class="product-nav-icon">📱</span>
+                    <span>Мобильная версия</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="audience" id="solutions">
+            <div class="section-head" data-animate>
+                <p class="eyebrow">Решения</p>
+                <h2>Для команд любого масштаба</h2>
+            </div>
+            <div class="audience-grid">
+                <article class="audience-card" data-animate>
+                    <p class="audience-label">Компаниям с отделами</p>
+                    <h3>Бизнес и разработка в одном пространстве</h3>
+                    <ul>
+                        <li>Общие каналы для задач и релизов</li>
+                        <li>AI-агент для контента и черновиков</li>
+                        <li>Управление участниками и ролями</li>
+                    </ul>
+                    <button class="btn btn-secondary" id="open-login-audience-1">Открыть workspace</button>
+                </article>
+                <article class="audience-card audience-card-accent" data-animate data-delay="1">
+                    <p class="audience-label">Тем, кто только начинает</p>
+                    <h3>Запустите workspace за 2 минуты</h3>
+                    <ul>
+                        <li>Онбординг: название и команда</li>
+                        <li>4 канала из коробки</li>
+                        <li>Демо-аккаунт без карты</li>
+                    </ul>
+                    <button class="btn btn-primary" id="open-login-audience-2">Создать бесплатно</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <div class="section-head" data-animate>
+                <p class="eyebrow">Продукты</p>
+                <h2>Рекомендуемые возможности</h2>
+            </div>
+            <div class="product-grid">
+                <article class="product-card" data-animate>
+                    <div class="product-card-badge">Популярное</div>
+                    <h3>Мессенджер для команд</h3>
+                    <p>Каналы для общего, разработки и бизнеса. Обсуждайте задачи без переключения между сервисами.</p>
+                    <a href="#platform" class="product-link">Подробнее →</a>
+                </article>
+                <article class="product-card" data-animate data-delay="1">
+                    <h3>OpenWeb AI</h3>
+                    <p>Попросите: «Настроим пост для Telegram и X» — получите готовый текст под каждую платформу.</p>
+                    <a href="#platform" class="product-link">Подробнее →</a>
+                </article>
+                <article class="product-card" data-animate data-delay="2">
+                    <h3>Workspace и команда</h3>
+                    <p>Создайте организацию, пригласите коллег по email и управляйте доступом из настроек.</p>
+                    <a href="#platform" class="product-link">Подробнее →</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="trust">
+            <div class="trust-inner" data-animate>
+                <p class="trust-lead">Команды выбирают OpenWeb, потому что всё под рукой</p>
+                <div class="trust-stats">
+                    <div class="trust-stat">
+                        <strong>97 мин</strong>
+                        <span>экономии в неделю на рутине</span>
+                    </div>
+                    <div class="trust-stat">
+                        <strong>4</strong>
+                        <span>канала из коробки</span>
+                    </div>
+                    <div class="trust-stat">
+                        <strong>24/7</strong>
+                        <span>AI-ассистент в панели</span>
+                    </div>
+                    <div class="trust-stat">
+                        <strong>100%</strong>
+                        <span>адаптивный интерфейс</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="section-head" data-animate>
+                <p class="eyebrow">Сервисы</p>
+                <h2>Всё на одном экране</h2>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card" data-animate>
+                    <div class="feature-icon">💬</div>
+                    <h3>Общение без шума</h3>
+                    <p>Структурированные каналы вместо бесконечных чатов. Бизнес и разработчики видят только нужное.</p>
+                </article>
+                <article class="feature-card" data-animate data-delay="1">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI под ваш тон</h3>
+                    <p>Настройте агента под Telegram, VK, X и другие площадки — один запрос, готовые материалы.</p>
+                </article>
+                <article class="feature-card" data-animate data-delay="2">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Настройки и безопасность</h3>
+                    <p>Профиль, workspace, смена пароля и управление командой — всё в одной панели настроек.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="platform" id="platform">
+            <div class="platform-grid">
+                <div class="platform-copy" data-animate>
+                    <p class="eyebrow">Платформа</p>
+                    <h2>Интерфейс легко адаптируется под вашу команду</h2>
+                    <ul class="platform-list">
+                        <li><strong>Знания</strong> — документы и решения всегда под рукой</li>
+                        <li><strong>Люди</strong> — бизнес и разработчики в одном пространстве</li>
+                        <li><strong>Процессы</strong> — задачи, обсуждения и результат в одном потоке</li>
+                        <li><strong>Агент</strong> — генерация контента, черновики и помощь в рутине</li>
+                    </ul>
+                    <button class="btn btn-primary" id="open-login-platform">Открыть панель</button>
+                </div>
+                <div class="platform-visual" data-animate data-delay="1">
+                    <div class="orbit">
+                        <div class="orbit-item" style="--i:0">💼</div>
+                        <div class="orbit-item" style="--i:1">⚙️</div>
+                        <div class="orbit-item" style="--i:2">📝</div>
+                        <div class="orbit-item" style="--i:3">🚀</div>
+                        <div class="orbit-core">
+                            <img src="/static/favicon.png" alt="" width="64" height="64">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="support-preview" data-animate>
+            <div class="support-card">
+                <div class="support-copy">
+                    <p class="eyebrow">Поддержка</p>
+                    <h2>Не оставим один на один с задачей</h2>
+                    <p>Задайте вопрос OpenWeb AI прямо в панели — агент поможет с текстами, идеями и рутиной.</p>
+                </div>
+                <div class="support-chat" aria-hidden="true">
+                    <div class="support-bubble support-bubble-user">Как настроить пост для Telegram?</div>
+                    <div class="support-bubble support-bubble-bot">Откройте канал «агент», опишите задачу — я подготовлю текст с учётом вашего тона.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faq">
+            <div class="section-head" data-animate>
+                <p class="eyebrow">Помощь</p>
+                <h2>Частые вопросы</h2>
+            </div>
+            <div class="faq-list" data-animate>
+                <details class="faq-item">
+                    <summary>Как быстро начать работу?</summary>
+                    <p>Зарегистрируйтесь или войдите с демо-аккаунтом demo@openweb.ru / demo1234. Workspace создаётся за пару минут через онбординг.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Что умеет OpenWeb AI?</summary>
+                    <p>Генерирует посты для соцсетей, помогает с черновиками и бизнес-задачами. Подключён Timeweb AI — открывается прямо из панели.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Можно ли пригласить команду?</summary>
+                    <p>Да. В настройках workspace добавьте участников по email — они появятся в организации и смогут войти после регистрации.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Работает ли на телефоне?</summary>
+                    <p>Да, интерфейс адаптирован под мобильные устройства: sidebar и панель участников открываются overlay-слоем.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="business" id="business">
+            <div class="business-card" data-animate>
+                <h2>Для бизнеса, который хочет двигаться быстрее</h2>
+                <p>
+                    Отправляйте запросы в общие беседы, настраивайте агента под свой тон
+                    и получайте готовые материалы для соцсетей — Telegram, X, VK и других площадок.
+                </p>
+                <button class="btn btn-accent btn-lg" id="open-login-business">Открыть панель управления</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand-block">
+                <div class="footer-brand">
+                    <img src="/static/favicon.png" alt="" class="logo-mark" width="40" height="40">
+                    <span>OpenWeb</span>
+                </div>
+                <p>Рабочее пространство для команд в России</p>
+            </div>
+            <div class="footer-links">
+                <strong>Продукты</strong>
+                <a href="#products">Мессенджер</a>
+                <a href="#products">OpenWeb AI</a>
+                <a href="#products">Workspace</a>
+            </div>
+            <div class="footer-links">
+                <strong>Компания</strong>
+                <a href="#platform">Платформа</a>
+                <a href="#faq">Помощь</a>
+                <a href="#business">Для бизнеса</a>
+            </div>
+            <div class="footer-links">
+                <strong>Аккаунт</strong>
+                <button type="button" class="footer-link-btn" id="open-login-footer">Войти</button>
+                <button type="button" class="footer-link-btn" id="open-login-footer-cta">Регистрация</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 OpenWeb · Российская платформа для команд</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="login-modal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+            <button class="modal-close" id="close-login" aria-label="Закрыть">&times;</button>
+            <div class="modal-header">
+                <p class="eyebrow">Личный кабинет</p>
+                <h2 id="modal-title">Вход в OpenWeb</h2>
+                <p class="modal-sub">Войдите или создайте аккаунт, чтобы открыть панель управления</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="login">Вход</button>
+                <button class="tab" data-tab="register">Регистрация</button>
+            </div>
+
+            <form id="login-form" class="auth-form active">
+                <label>
+                    Email
+                    <input type="email" name="email" required placeholder="you@company.ru" autocomplete="email">
+                </label>
+                <label>
+                    Пароль
+                    <input type="password" name="password" required placeholder="••••••••" autocomplete="current-password">
+                </label>
+                <p class="form-hint">Демо: demo@openweb.ru / demo1234</p>
+                <button type="submit" class="btn btn-primary btn-full">Войти в аккаунт</button>
+            </form>
+
+            <form id="register-form" class="auth-form">
+                <label>
+                    Имя
+                    <input type="text" name="name" required placeholder="Алексей">
+                </label>
+                <label>
+                    Компания
+                    <input type="text" name="company" placeholder="ООО «Пример»">
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="email" required placeholder="you@company.ru" autocomplete="email">
+                </label>
+                <label>
+                    Пароль
+                    <input type="password" name="password" required minlength="6" placeholder="Минимум 6 символов" autocomplete="new-password">
+                </label>
+                <button type="submit" class="btn btn-primary btn-full">Создать аккаунт</button>
+            </form>
+
+            <p class="form-error" id="auth-error" hidden></p>
+        </div>
+    </div>
+
+    <script src="/static/js/landing.js"></script>
+</body>
+</html>

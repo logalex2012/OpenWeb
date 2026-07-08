@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ code }} — OpenWeb</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --ink-900: #0b1220;
+            --ink-800: #151e2e;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --text-faint: #94a3b8;
+            --surface-soft: #f4f6f9;
+            --surface-muted: #eef1f6;
+            --font: "Inter", system-ui, -apple-system, sans-serif;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--surface-soft);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Фоновый градиент как на landing */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(13,148,136,0.12) 0%, transparent 70%),
+                linear-gradient(180deg, #fff 0%, var(--surface-soft) 55%, #eef1f6 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .error-wrap {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 520px;
+            width: 100%;
+            animation: fadeUp 0.5s var(--ease-out) both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 3rem;
+        }
+        .logo img { width: 36px; height: 36px; border-radius: 8px; }
+
+        .error-code {
+            font-size: clamp(5rem, 20vw, 9rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--primary) 0%, #14b8a6 50%, #0f766e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.25rem;
+            user-select: none;
+        }
+
+        .error-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.65rem;
+            color: var(--ink-800);
+        }
+
+        .error-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 2.25rem;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1.4rem;
+            border-radius: 999px;
+            font-size: 0.925rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover { transform: translateY(-1px); }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 18px rgba(13,148,136,0.3);
+        }
+        .btn-primary:hover { background: var(--primary-dark); box-shadow: 0 6px 24px rgba(13,148,136,0.38); }
+        .btn-ghost {
+            background: #fff;
+            color: var(--text);
+            box-shadow: 0 2px 10px rgba(15,23,42,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        .btn-ghost:hover { background: var(--surface-muted); }
+
+        .divider {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), #14b8a6);
+            border-radius: 99px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Декоративные точки */
+        .dots {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .dots-tl { top: -60px; left: -60px; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(13,148,136,0.07) 0%, transparent 70%); }
+        .dots-br { bottom: -80px; right: -80px; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%); }
+    </style>
+</head>
+<body>
+    <div class="dots dots-tl"></div>
+    <div class="dots dots-br"></div>
+
+    <div class="error-wrap">
+        <a href="/" class="logo">
+            <img src="/static/favicon.png" alt="OpenWeb">
+            <span>OpenWeb</span>
+        </a>
+
+        <div class="error-code">{{ code }}</div>
+        <div class="divider"></div>
+        <h1 class="error-title">{{ title }}</h1>
+        <p class="error-desc">{{ description }}</p>
+
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary">На главную</a>
+            {% if code != 502 %}
+            <a href="javascript:history.back()" class="btn btn-ghost">← Назад</a>
+            {% else %}
+            <a href="javascript:location.reload()" class="btn btn-ghost">Обновить</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
