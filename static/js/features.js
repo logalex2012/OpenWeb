@@ -559,7 +559,6 @@ async function handleVoiceStop() {
 }
 
 // ===== /poll COMMAND DETECTION IN MESSAGE INPUT =====
-const messageInput = document.getElementById("message-input");
 messageInput?.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
         const val = messageInput.value.trim();

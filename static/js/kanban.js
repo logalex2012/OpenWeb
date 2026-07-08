@@ -1,6 +1,5 @@
 // Kanban board feature
 const kanbanBoard = document.getElementById("kanban-board");
-const messagesEl = document.getElementById("messages");
 let kanbanState = { channelId: null, cards: [], dragCard: null };
 
 function showKanban(channelId) {
