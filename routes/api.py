@@ -7,6 +7,7 @@ from routes.auth import login_required
 from routes.csrf import get_or_create_csrf_token, generate_csrf_token
 from services.agent_service import generate_agent_reply
 from services.avatars import clear_user_avatar, save_avatar
+from services.link_preview import get_link_preview
 from services.organization import get_user_organization, user_needs_onboarding
 from services.user_settings import get_or_create_agent_config, get_or_create_user_settings
 
@@ -139,6 +140,13 @@ def me():
             "organization": organization.to_dict() if organization else None,
         }
     )
+
+
+@api_bp.route("/link-preview")
+@login_required
+def link_preview():
+    url = request.args.get("url", "")
+    return jsonify({"preview": get_link_preview(url)})
 
 
 @api_bp.route("/settings")

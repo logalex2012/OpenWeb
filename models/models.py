@@ -608,3 +608,26 @@ class Notification(db.Model):
             "is_read": self.is_read,
             "created_at": self.created_at.isoformat(),
         }
+
+
+class LinkPreview(db.Model):
+    __tablename__ = "link_previews"
+
+    id = db.Column(db.Integer, primary_key=True)
+    url_hash = db.Column(db.String(64), nullable=False, unique=True, index=True)
+    url = db.Column(db.Text, nullable=False)
+    title = db.Column(db.String(300))
+    description = db.Column(db.String(500))
+    image_url = db.Column(db.Text)
+    site_name = db.Column(db.String(120))
+    status = db.Column(db.String(16), default="ok")  # ok | failed
+    fetched_at = db.Column(db.DateTime, default=utcnow)
+
+    def to_dict(self):
+        return {
+            "url": self.url,
+            "title": self.title or "",
+            "description": self.description or "",
+            "image_url": self.image_url or "",
+            "site_name": self.site_name or "",
+        }

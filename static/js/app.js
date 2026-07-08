@@ -86,12 +86,27 @@ function escapeHtml(text) {
         .replace(/"/g, "&quot;");
 }
 
+function linkifyBareUrls(text) {
+    const urlRegex = /https?:\/\/[^\s<>"']+/g;
+    const trailingPunct = /[.,:;!?)\]'"]+$/;
+    return text.replace(urlRegex, (match) => {
+        let url = match;
+        let trailing = "";
+        const trailingMatch = url.match(trailingPunct);
+        if (trailingMatch) {
+            trailing = trailingMatch[0];
+            url = url.slice(0, -trailing.length);
+        }
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="preview-link">${url}</a>${trailing}`;
+    });
+}
+
 function renderMarkdownLite(text) {
     const escaped = text
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
-    return escaped
+    const withMarkdown = escaped
         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
         .replace(/^#### (.*)$/gm, "<h5>$1</h5>")
         .replace(/^### (.*)$/gm, "<h4>$1</h4>")
@@ -101,7 +116,13 @@ function renderMarkdownLite(text) {
         .replace(/`([^`]+)`/g, "<code>$1</code>")
         .replace(/^- \[x\] (.+)$/gm, '<li class="task done"><input type="checkbox" checked disabled> $1</li>')
         .replace(/^- \[ \] (.+)$/gm, '<li class="task"><input type="checkbox" disabled> $1</li>')
-        .replace(/\[(.+?)\]\((https?:\/\/.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        .replace(/\[(.+?)\]\((https?:\/\/.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="preview-link">$1</a>');
+
+    // Skip text already inside an <a>...</a> (from the markdown-link pass above) when linkifying bare URLs.
+    return withMarkdown
+        .split(/(<a\b[^>]*>[\s\S]*?<\/a>)/gi)
+        .map((part, i) => (i % 2 === 1 ? part : linkifyBareUrls(part)))
+        .join("");
 }
 
 function renderMessageAvatar(message) {
@@ -616,6 +637,105 @@ function attachMentionAutocomplete(textareaEl, dropdownEl) {
 
 const messageMentions = attachMentionAutocomplete(messageInput, document.getElementById("mention-dropdown"));
 window.attachMentionAutocomplete = attachMentionAutocomplete;
+
+// ===== LINK PREVIEW POPUP (quick view on hover) =====
+const linkPreviewCache = new Map();
+let linkPreviewPopupEl = null;
+let linkPreviewShowTimer = null;
+let linkPreviewHideTimer = null;
+let linkPreviewActiveLink = null;
+
+function ensureLinkPreviewPopup() {
+    if (!linkPreviewPopupEl) {
+        linkPreviewPopupEl = document.createElement("div");
+        linkPreviewPopupEl.className = "link-preview-popup";
+        linkPreviewPopupEl.hidden = true;
+        document.body.appendChild(linkPreviewPopupEl);
+    }
+    return linkPreviewPopupEl;
+}
+
+function positionLinkPreviewPopup(linkEl) {
+    const popup = ensureLinkPreviewPopup();
+    const rect = linkEl.getBoundingClientRect();
+    const popupWidth = 320;
+    let left = Math.min(rect.left, window.innerWidth - popupWidth - 16);
+    popup.style.left = `${Math.max(8, left)}px`;
+    popup.style.top = `${rect.bottom + 8}px`;
+}
+
+function renderLinkPreviewPopup(data) {
+    const popup = ensureLinkPreviewPopup();
+    if (!data || (!data.title && !data.description && !data.image_url)) {
+        popup.hidden = true;
+        return;
+    }
+    popup.innerHTML = `
+        ${data.image_url ? `<img class="link-preview-image" src="${data.image_url}" alt="" loading="lazy">` : ""}
+        <div class="link-preview-body">
+            ${data.site_name ? `<div class="link-preview-site">${escapeHtml(data.site_name)}</div>` : ""}
+            ${data.title ? `<div class="link-preview-title">${escapeHtml(data.title)}</div>` : ""}
+            ${data.description ? `<div class="link-preview-desc">${escapeHtml(data.description)}</div>` : ""}
+        </div>
+    `;
+    popup.hidden = false;
+}
+
+function hideLinkPreviewPopup() {
+    if (linkPreviewPopupEl) linkPreviewPopupEl.hidden = true;
+    linkPreviewActiveLink = null;
+}
+
+async function showLinkPreview(linkEl) {
+    const url = linkEl.href;
+    if (!url) return;
+
+    if (linkPreviewCache.has(url)) {
+        const cached = linkPreviewCache.get(url);
+        if (linkPreviewActiveLink === linkEl && cached) {
+            positionLinkPreviewPopup(linkEl);
+            renderLinkPreviewPopup(cached);
+        }
+        return;
+    }
+
+    const data = await api(`/api/link-preview?url=${encodeURIComponent(url)}`).catch(() => null);
+    const preview = data?.preview || null;
+    linkPreviewCache.set(url, preview);
+
+    if (linkPreviewActiveLink === linkEl && preview) {
+        positionLinkPreviewPopup(linkEl);
+        renderLinkPreviewPopup(preview);
+    }
+}
+
+messagesEl.addEventListener("mouseover", (e) => {
+    const link = e.target.closest(".preview-link");
+    if (!link || link === linkPreviewActiveLink) return;
+    clearTimeout(linkPreviewHideTimer);
+    clearTimeout(linkPreviewShowTimer);
+    linkPreviewActiveLink = link;
+    linkPreviewShowTimer = setTimeout(() => {
+        if (linkPreviewActiveLink === link) showLinkPreview(link);
+    }, 350);
+});
+
+messagesEl.addEventListener("mouseout", (e) => {
+    const link = e.target.closest(".preview-link");
+    if (!link) return;
+    if (e.relatedTarget && link.contains(e.relatedTarget)) return;
+    clearTimeout(linkPreviewShowTimer);
+    linkPreviewHideTimer = setTimeout(hideLinkPreviewPopup, 100);
+});
+
+messagesEl.addEventListener("scroll", hideLinkPreviewPopup);
+
+messageInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" || e.shiftKey || e.isComposing || e.defaultPrevented) return;
+    if (messageInput.value.trim().startsWith("/poll")) return;
+    e.preventDefault();
+    messageForm.requestSubmit();
+});
 
 messageForm.addEventListener("submit", async (event) => {
     event.preventDefault();
