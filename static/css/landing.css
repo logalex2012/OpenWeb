@@ -112,6 +112,22 @@ select {
     color: var(--text);
 }
 
+.nav-github {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-trust-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dashed currentColor;
+}
+
+.hero-trust-link:hover {
+    opacity: 0.8;
+}
+
 .header-actions {
     display: flex;
     align-items: center;
