@@ -913,17 +913,16 @@ messageInput?.addEventListener("input", () => {
 });
 
 async function init() {
-    await initCsrfToken();
+    const csrfPromise = initCsrfToken();
     renderEmptyChat();
     await loadUser();
+    await csrfPromise;
     const needsOnboarding = window.checkOnboardingRequired
         ? await checkOnboardingRequired()
         : false;
 
     if (!needsOnboarding) {
-        await loadChannels();
-        await loadAgentConfig();
-        await loadTeam();
+        await Promise.all([loadChannels(), loadAgentConfig(), loadTeam()]);
     }
 }
 

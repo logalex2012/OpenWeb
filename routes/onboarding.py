@@ -15,9 +15,11 @@ from services.organization import (
 onboarding_bp = Blueprint("onboarding", __name__, url_prefix="/api/onboarding")
 
 
-def member_to_dict(member: OrganizationMember) -> dict:
+def member_to_dict(member: OrganizationMember, avatar_url: str | None = None) -> dict:
     data = member.to_dict()
-    if member.user_id:
+    if avatar_url is not None:
+        data["avatar_url"] = avatar_url
+    elif member.user_id:
         settings = UserSettings.query.filter_by(user_id=member.user_id).first()
         data["avatar_url"] = settings.avatar_url if settings else ""
     else:
@@ -91,7 +93,16 @@ def organization_members():
         return jsonify({"members": []})
 
     team = list_organization_members(user.organization_id)
-    return jsonify({"members": [member_to_dict(member) for member in team]})
+    user_ids = [member.user_id for member in team if member.user_id]
+    avatars = {}
+    if user_ids:
+        avatars = {
+            settings.user_id: settings.avatar_url
+            for settings in UserSettings.query.filter(UserSettings.user_id.in_(user_ids)).all()
+        }
+    return jsonify({
+        "members": [member_to_dict(member, avatars.get(member.user_id, "")) for member in team]
+    })
 
 
 @org_bp.route("/members", methods=["POST"])
