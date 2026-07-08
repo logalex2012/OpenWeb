@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'AllExcludingTests' in project 'Aggregate'
+➜ Explicit dependency on target 'OpenWebApp-product' in project 'OpenWebApp'
+➜ Explicit dependency on target 'OpenWebApp' in project 'OpenWebApp'
+Target 'OpenWebApp' in project 'OpenWebApp' (no dependencies)
+Target 'OpenWebApp-product' in project 'OpenWebApp' (no dependencies)

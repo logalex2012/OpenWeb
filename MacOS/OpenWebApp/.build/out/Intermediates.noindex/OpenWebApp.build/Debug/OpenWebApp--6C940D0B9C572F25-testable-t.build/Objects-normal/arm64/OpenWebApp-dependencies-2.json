@@ -1,328 +1,677 @@
 [
   {
     "isFramework" : true,
+    "moduleName" : "Accessibility",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Accessibility-2OWDWIKDLEOYH.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "AppKit",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/AppKit-14G42B2T96EPG.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "ColorSync",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ColorSync-3C9A5CB9NQRJ2.swiftmodule"
+  },
+  {
+    "isFramework" : true,
     "moduleName" : "Combine",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Combine-T1OXGF9JDQJN.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Combine-21YBK0PL7NKRH.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "CoreAudio",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreAudio-3J3QU8ZFE00S1.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "CoreData",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreData-2OFCH5W108Y3V.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "CoreFoundation",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreFoundation-3LKJ33NL658BU.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreFoundation-3QN5C1196ZEVO.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "CoreGraphics",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreGraphics-CC7SU64AFAVE.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "CoreImage",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreImage-BYHHNCDLYBP9.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "CoreMedia",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreMedia-2ICNPXR7BVJN3.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "CoreText",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreText-ZTL7I0O52J70.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "CoreTransferable",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreTransferable-2WV90KEWXG6YF.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "CoreVideo",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreVideo-2Y7X5PKXIM01M.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "Darwin",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Darwin-19UOOU9C16IH9.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Darwin-1SBN0ZZXZUBT8.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "DataDetection",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/DataDetection-3HLROL7Y88MEK.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "DeveloperToolsSupport",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/DeveloperToolsSupport-3B4FM30CUIVXS.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "Dispatch",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Dispatch-1YO7GPSCEADAZ.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Dispatch-37G6S2W5QRS3H.swiftmodule"
   },
   {
     "isFramework" : true,
     "moduleName" : "Foundation",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Foundation-2FNHOGI2HJH3V.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Foundation-1NM4EK525CLN8.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "IOKit",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/IOKit-38AEL5CR6NTT3.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/IOKit-2Y1MPFTRTTX5L.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "ImageIO",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ImageIO-F8XU7WMB1AEO.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "Metal",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Metal-2IG7GPBEK2Y4K.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "OSLog",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/OSLog-2H02FSE8O1MDX.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "ObjectiveC",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ObjectiveC-T7M875MQV0PW.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ObjectiveC-2VI1ZD0U0KZTA.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "Observation",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Observation-26Q3GEY9VPBZL.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Observation-3079YYJCKXH3E.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "QuartzCore",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/QuartzCore-ZG5O6Z8W6LQW.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "Spatial",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Spatial-1B1MTUJ54C0AL.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "Swift",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Swift-2IEO24NBC2ICS.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Swift-2G3GSX6027Z39.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "SwiftOnoneSupport",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftOnoneSupport-2ILO0LQ98B0N.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftOnoneSupport-353B5OWFAIHJ2.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "SwiftUI",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftUI-QY46308LQL1O.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "SwiftUICore",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftUICore-OWA3EHXDWGF2.swiftmodule"
+  },
+  {
+    "isFramework" : true,
+    "moduleName" : "Symbols",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Symbols-1L6A1S2E82CKO.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "Synchronization",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Synchronization-4PIZXEF8J4RG.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "System",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/System-GY13PRRBKGBX.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/System-1KSVOFAO1XF66.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "UniformTypeIdentifiers",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/UniformTypeIdentifiers-1MAXU6SG3UG5Q.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "XPC",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/XPC-1QBE58XEPUA36.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/XPC-7BKL9RY42LKW.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "_Builtin_float",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_float-1OA35H3CO9927.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_float-1807PNHUVPEHG.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "_Concurrency",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Concurrency-32GYZN1RBSQXD.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Concurrency-3ODH0W42AUDZW.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "_DarwinFoundation1",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation1-1ZX0V546G8HQT.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation1-3HTG437F84IC7.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "_DarwinFoundation2",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation2-1VYMNJ1SA3G2J.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation2-2QPGRQX9HR809.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "_DarwinFoundation3",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation3-10TFWWWUTXBI5.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation3-R44QLORPEIMT.swiftmodule"
   },
   {
     "isFramework" : false,
     "moduleName" : "_StringProcessing",
-    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_StringProcessing-2JNGE98PH8POD.swiftmodule"
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_StringProcessing-1FA7MQ75586O8.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "os",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/os-3GC8SYHW0SFS0.swiftmodule"
+  },
+  {
+    "isFramework" : false,
+    "moduleName" : "simd",
+    "modulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/simd-2LXANGKDDD6UY.swiftmodule"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/Accessibility.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Accessibility-9Q7RPPTTO6EWAM637DQBYA16.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "Accessibility"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/AppKit.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/AppKit-82U0IK2OXPWM97SNBR01ASN5M.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "AppKit"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/ApplicationServices.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ApplicationServices-511EQGD1HDOX9380D5DEY5N1T.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "ApplicationServices"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CFNetwork.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CFNetwork-4R3KBUNHMVEF6ESDT0XFA2Q7Y.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CFNetwork-D5Q0K8KXYKUCKMZHX9JKBGBAS.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "CFNetwork"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/cups.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CUPS-8DVQNUJSHZMENIBZ3559A3XLB.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CUPS"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/ColorSync.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ColorSync-B5DPOA7N53AYNIA4WYOR6UMXH.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "ColorSync"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreAudio.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreAudio-ERV4VIKAWCDIU43TL10Q8YGVI.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreAudio"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreAudioTypes.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreAudioTypes-5TQ72CW8E6V9AJOCCP0SOABSK.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreAudioTypes"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreData.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreData-5ZAXEFEPB488SR8Z2SE28ATSA.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreData"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreFoundation.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreFoundation-EMMRE63U82IGSATXI4GKUQCXL.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreFoundation-25UCOJASTZDPQWT12JIQW2GHT.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "CoreFoundation"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreGraphics.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreGraphics-606KXSPOOVVR456MN1QR0D2NZ.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreGraphics"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreImage.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreImage-4KAOEAH1JW57VSHE9D8Q98J41.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreImage"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreMedia.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreMedia-EDV0W15CB2VU69GLSPPWLFWUK.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreMedia"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreServices.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreServices-1QD7J7S93Z8GGPU3PL9DU62XH.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreServices-E5WPX6DKHDJ0DA9BW0OTUZXUP.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "CoreServices"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreText.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreText-DE2GD15LD5UFZ1V996PK24BAR.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreText"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreTransferable.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreTransferable-DQAGQ3QLPVP79CAIQ6850Q1BR.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreTransferable"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/CoreVideo.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/CoreVideo-DHNXWSIM3CGMEJLL2V8YQDPFF.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "CoreVideo"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/Darwin.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Darwin-24T15664UBZ7VUK967J0LFAVP.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Darwin-E7KW5R03VQRWU47QS0NHWCFWY.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "Darwin"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/DataDetection.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/DataDetection-6NS40H4FX6D9HYTH0LQ9L5KI0.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "DataDetection"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/DeveloperToolsSupport.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/DeveloperToolsSupport-S2FNV5ONYJ490076HLAZ97UR.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "DeveloperToolsSupport"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/DiskArbitration.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/DiskArbitration-CWG4HC7Y3512X127ZRJ1C25KV.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/DiskArbitration-2U6720P86Z4KA85UHEEI03UC3.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "DiskArbitration"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/dispatch.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Dispatch-53UV6AJKRTV0UP4BMJX1GKU6.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Dispatch-A0NJIVPO78P92UT4J9D094AOM.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "Dispatch"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/Foundation.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Foundation-ET6HAH9FF81HH4KYFZ55SX0QC.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Foundation-8WB8MT2ZTMNHYMR1L1ARLCMHF.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "Foundation"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/IOKit.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/IOKit-8PX87MMEAVX75YD9STG1XR346.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/IOKit-8MDT8NFUWE0NO41SH89ODSBB5.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "IOKit"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/IOSurface.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/IOSurface-AYH9H0A39ZUP9HPLW7TOEQLBS.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "IOSurface"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/ImageIO.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ImageIO-1XZ4A3D9LXU1OKHCSJTGWPWNY.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "ImageIO"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/DarwinBasic.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/MachO-6P9LMIB1T6JLWA4MU06F7CI.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/MachO-4GPWCDZY6FC3DYOAIVRHIST3S.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "MachO"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/Metal.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Metal-D86ZXAES05WN27E4OZI21O3HT.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "Metal"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/OSLog.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/OSLog-EOO3EIOQAQRPGBB85BBO1QC2D.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "OSLog"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/ObjectiveC.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ObjectiveC-5UL9249Z5A8ZPLMTAOL9V4O4H.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ObjectiveC-18YHV0E7OC3UXEZ99IFE7SDMC.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "ObjectiveC"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/OpenGL.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/OpenGL-ACWTVI4ZFR4TTT3J0VLBEJL5Y.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "OpenGL"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/QuartzCore.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/QuartzCore-9DFYI0VCM1H6OO2DUPDCA5QFW.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "QuartzCore"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/Security.framework\/Modules\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Security-CSBIG1RERE99LTQM3XK7ETV2W.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Security-6FZEXZG71T7RVAT4T3T0H65DW.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "Security"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/Spatial\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Spatial-6DWP1XICGV4K7JU43IHRPXZTP.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "Spatial"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/lib\/swift\/shims\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftShims-7R4U46QU03CQ4HUIW6HA1GA2F.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftShims-A989ZOED8KUC3XPD1QW7N8RJ2.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "SwiftShims"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/SwiftUI.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftUI-EURQGAAW9TBJEWJFC2ATD9H77.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "SwiftUI"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/SwiftUICore.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/SwiftUICore-D9EPYGGV2YQ75P575G695D24P.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "SwiftUICore"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/Symbols.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/Symbols-37OV3SP90NSTZY6O5R54KLFCJ.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "Symbols"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/System\/Library\/Frameworks\/UniformTypeIdentifiers.framework\/Modules\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/UniformTypeIdentifiers-BCL2HCA26WA2ANMGOVOITA57R.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "UniformTypeIdentifiers"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/xpc.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/XPC-853S8UT5I6Z5HFLAMY1ML91J.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/XPC-BP8O7P4EQTYB34NLEYTXVE9DD.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "XPC"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/DarwinFoundation1.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_AvailabilityInternal-5XSQPCLSATAVGN9CM6L6PDYXD.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_AvailabilityInternal-754NND3Y29KJXSX93F5AIHUA6.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_AvailabilityInternal"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_float-BVK1SBDSW3FS6MBH4QP0ORYTK.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_float-CVO9BY9EWW6G3L8HS82MD56VZ.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_float"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_inttypes-40B8T5Y1NPJLR8L0SYWJRN9OS.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_intrinsics-2D22JPVX0IIT314WEB5P40CU3.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "_Builtin_intrinsics"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_inttypes-A3O1ZHGAMRLG5ABJKHMFUOM5J.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_inttypes"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_limits-9X3B02SF1AYZUDF4SHHWOD58U.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_limits-90O1TGKU07D99VEFT773H2AHZ.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_limits"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdarg-9LJS7OCEPQES5ADJ86MKGZBVV.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdarg-5YWIZZC4P8BKEV0D1LLTOJVDG.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_stdarg"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdbool-D52V9B8L83C7I3IDMROUQJL6H.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdatomic-7FGGD98F9LLH8U771E4BNEUDG.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "_Builtin_stdatomic"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdbool-9DXRZUS4RMQKYL3MWSVY56VY.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_stdbool"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stddef-A2XD0JTRNEQ4Z9VYRVDT43YP5.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stddef-4MRCWJSOQTFYONCF66GETVE0Q.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_stddef"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdint-9ZEL3BHV7E6E6X6YB08KSWV1R.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_stdint-IS8OSC933HLV53D9XYFYBALZ.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_Builtin_stdint"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_Builtin_tgmath-AFMT34LAH7KI1R5IC0BLMMX0C.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "_Builtin_tgmath"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/DarwinFoundation1.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation1-7EF0PPJCBUC57FCELGEAPALJC.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation1-CK2ISIAVTB6DF6B03ISZJWTGY.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_DarwinFoundation1"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/DarwinFoundation2.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation2-5W8RZL3LWG5TQDP0A2SS466T4.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation2-AJ5MLSR11LNR5R58HJ9DKMFRS.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_DarwinFoundation2"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/DarwinFoundation3.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation3-CUNB4REKDN56EWVT5HS3SQNLY.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_DarwinFoundation3-BKP2T555APZK3TYD9CA3503FZ.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_DarwinFoundation3"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/lib\/swift\/shims\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_SwiftConcurrencyShims-UJQDYUGU3AFBT0CRCA4831NP.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/_SwiftConcurrencyShims-C0I9WV0I696FNNB9RXKBQJ0VT.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "_SwiftConcurrencyShims"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/launch.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/launch-53NQXB6TYTBZMKTI7B9VHTMAN.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/launch-3RTLFEMQLBCB34OC7DR633XCS.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "launch"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/libDER\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/libDER-ASX1S3AMGAT3VPHHP7RATKG68.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/libDER-6WQFNHBCV51QRAAFIY2C6661L.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "libDER"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/libkern.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/libkern-ECPLOYDMOBMGCVBC44TVOPOJZ.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/libkern-C28FAMR7MF0OK26DE58WCIX66.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "libkern"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/os.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/os_object-7NUIO7NWYR1UUB755QIFJYKYM.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/os-B64X9E38KXKC8VB3OLSG74Q5C.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "os"
+  },
+  {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/os.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/os_object-9ZW6GK6MBWULL8L5I8G2EGR5V.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "os_object"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/os.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/os_workgroup-EIETJWGNUZJ866AUWKN1MFQ0M.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/os_workgroup-3247QVWWVVS4APNSZV31B5NS4.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "os_workgroup"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ptrauth-3U0XSNIGW7ZMQ5Y6KV2K77LSS.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ptrauth-4DYA4UWS2HW7XEA1KKFCZ4UDQ.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "ptrauth"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/usr\/lib\/clang\/21\/include\/module.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ptrcheck-CSS5HMC2I8HKO2EVEF6RWST0L.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/ptrcheck-CUIU7FC294ALUGTCSU439V46A.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "ptrcheck"
   },
   {
+    "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/simd\/module.modulemap",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/simd-A23GFQDYUIXRDBYKJC1OQ7FWM.pcm",
+    "isBridgingHeaderDependency" : false,
+    "isFramework" : false,
+    "moduleName" : "simd"
+  },
+  {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/c_standard_library.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/string_h-3JM73NHTMRN0O3NMSRRPNWCWR.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/string_h-6QBE3ISW3PV6H80N57JK9CO07.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "string_h"
   },
   {
     "clangModuleMapPath" : "\/Library\/Developer\/CommandLineTools\/SDKs\/MacOSX27.0.sdk\/usr\/include\/DarwinFoundation2.modulemap",
-    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/sys_types-1SWBFIJN8G2YZ2JJPBMMXWTLV.pcm",
+    "clangModulePath" : "\/Users\/alekseyloginov\/OpenWeb\/MacOS\/OpenWebApp\/.build\/out\/SDKExplicitPrecompiledModules\/sys_types-6ET97IWTXTRSY7M5KV3AEU91Z.pcm",
     "isBridgingHeaderDependency" : false,
     "isFramework" : false,
     "moduleName" : "sys_types"

@@ -1,1 +1,0 @@
-print("compile check ok")
